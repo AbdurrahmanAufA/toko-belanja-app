@@ -1,6 +1,4 @@
 Demo
 Link Railway : (https://toko-belanja-app-production.up.railway.app)
 
-Admin
-Email : admin@gmail.com
-Password : 123456
+Project 4: Muhammad Rahadian Abdurrahman Auf A (GLNG-KS07-010)
