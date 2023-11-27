@@ -14,7 +14,7 @@ import (
 type AuthService interface {
 	Authentication() gin.HandlerFunc
 
-	AuthorizationAdmin() gin.HandlerFunc
+	AdminAuthorization() gin.HandlerFunc
 }
 
 type authService struct {
@@ -66,7 +66,7 @@ func (a *authService) Authentication() gin.HandlerFunc {
 	}
 }
 
-func (a *authService) AuthorizationAdmin() gin.HandlerFunc {
+func (a *authService) AdminAuthorization() gin.HandlerFunc {
 	return func(ctx *gin.Context) {
 		user, ok := ctx.MustGet("userData").(entity.User)
 		if !ok {

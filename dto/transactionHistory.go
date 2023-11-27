@@ -7,7 +7,7 @@ import (
 
 type NewTransactionRequest struct {
 	ProductId int `json:"product_id"`
-	Quantity  int `json:"quantity" valid:"required~quantity cannot be empty" example:"5"`
+	Quantity  int `json:"quantity" valid:"required~quantity cannot be empty"`
 }
 
 type NewTransactionResponse struct {
@@ -25,7 +25,7 @@ type TransactionReturn struct {
 
 type TransactionRequest struct {
 	ProductId int  `json:"product_id" example:"1"`
-	Quantity  int `json:"quantity" valid:"required~Quantity can't be empty" example:"3"`
+	Quantity  int `json:"quantity" valid:"required~Quantity can't be empty"`
 }
 
 type TransactionBill struct {

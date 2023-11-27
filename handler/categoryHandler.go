@@ -21,16 +21,6 @@ func NewCategoryHandler(categoryService service.CategoryService) categoryHandler
 	}
 }
 
-// CreateNewCategory godoc
-// @Tags categorys
-// @Description Create New Category Data
-// @ID create-new-category
-// @Accept json
-// @Produce json
-// @Param Authorization header string true "Insert your access token" default(Bearer <Add access token here>)
-// @Param RequestBody body dto.NewCategoryRequest true "request body json"
-// @Success 201 {object} dto.NewCategoryRequest
-// @Router /categorys [post]
 func (m categoryHandler) CreateNewCategory(c *gin.Context) {
 	var categoryRequest dto.NewCategoryRequest
 
@@ -52,33 +42,6 @@ func (m categoryHandler) CreateNewCategory(c *gin.Context) {
 
 	c.JSON(http.StatusCreated, newCategory)
 }
-
-// func (m categoryHandler) UpdateCategoryById(c *gin.Context) {
-// 	var categoryRequest dto.NewCategoryRequest
-
-// 	if err := c.ShouldBindJSON(&categoryRequest); err != nil {
-// 		errBindJson := errs.NewUnprocessibleEntityError("invalid request body")
-
-// 		c.JSON(errBindJson.Status(), errBindJson)
-// 		return
-// 	}
-
-// 	categoryId, err := helpers.GetParamId(c, "categoryId")
-
-// 	if err != nil {
-// 		c.AbortWithStatusJSON(err.Status(), err)
-// 		return
-// 	}
-
-// 	response, err := m.categoryService.UpdateCategoryById(categoryId, categoryRequest)
-
-// 	if err != nil {
-// 		c.AbortWithStatusJSON(err.Status(), err)
-// 		return
-// 	}
-
-// 	c.JSON(response.StatusCode, response)
-// }
 
 func (ch *categoryHandler) GetCategory(ctx *gin.Context) {
 	user := ctx.MustGet("userData").(entity.User)

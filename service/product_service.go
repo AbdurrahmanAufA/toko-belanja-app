@@ -7,7 +7,6 @@ import (
 	"toko-belanja/pkg/errs"
 	"toko-belanja/pkg/helpers"
 
-	// "toko-belanja/repository/category_repository"
 	"toko-belanja/repository/product_repository"
 )
 
@@ -20,7 +19,6 @@ type ProductService interface {
 
 type productService struct {
 	productRepo product_repository.Repository
-	// categoryRepo category_repository.Repository
 }
 
 func NewProductService(productRepo product_repository.Repository) ProductService {

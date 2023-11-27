@@ -3,7 +3,7 @@ package dto
 import "time"
 
 type NewCategoryRequest struct {
-	Type string `json:"type" valid:"required~type cannot be empty" example:"Jelangkung"`
+	Type string `json:"type" valid:"required~type cannot be empty"`
 }
 
 type NewCategoryResponse struct {
@@ -14,10 +14,10 @@ type NewCategoryResponse struct {
 }
 
 type CategoryResponse struct {
-	Id                int       `json:"id" example:"1"`
-	Type              string    `json:"type" example:"jersey"`
-	SoldProductAmount int       `json:"sold_product_amount" example:"0"`
-	CreatedAt         time.Time `json:"created_at" example:"2023-10-09T05:14:35.19324086+07:00"`
+	Id                int       `json:"id"`
+	Type              string    `json:"type"`
+	SoldProductAmount int       `json:"sold_product_amount"`
+	CreatedAt         time.Time `json:"created_at"`
 }
 
 type GetCategoryResponse struct {
@@ -30,7 +30,7 @@ type GetCategoryResponse struct {
 type GetCategoryReturn struct {
 	Id                int                     `json:"id"`
 	Type              string                  `json:"type"`
-	SoldProductAmount int                     `json:"sold_product_amount" example:"0"`
+	SoldProductAmount int                     `json:"sold_product_amount"`
 	CreatedAt         time.Time               `json:"created_at"`
 	UpdatedAt         time.Time               `json:"Updated_at"`
 	Product           []GetProductForCategory `json:"Tasks"`

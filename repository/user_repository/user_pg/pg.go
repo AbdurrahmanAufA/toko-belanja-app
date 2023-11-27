@@ -64,24 +64,6 @@ func (u *userPG) CreateNewUser(user entity.User) errs.MessageErr {
 	return nil
 }
 
-// func (u *userPG) CreateNewUser(user entity.User) (*entity.User, errs.MessageErr) {
-
-// 	var newUser entity.User
-
-// 	rows := u.db.QueryRow(createNewUser, user.FullName, user.Email, user.Password, user.Role, user.Balance)
-
-// 	err := rows.Scan(&newUser.Id, &newUser.CreatedAt)
-// 	if err != nil {
-// 		if err == sql.ErrNoRows {
-// 			return nil, errs.NewNotFoundError("user not found")
-// 		}
-
-// 		return nil, errs.NewInternalServerError("Something went wrong")
-// 	}
-
-// 	return &user, nil
-// }
-
 func (u *userPG) GetUserById(userId int) (*entity.User, errs.MessageErr) {
 	var user entity.User
 

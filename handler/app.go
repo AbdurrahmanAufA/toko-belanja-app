@@ -66,20 +66,12 @@ func StartApp() {
 
 	route := gin.Default()
 
-	// docs.SwaggerInfo.Title = "Belajar DDD"
-	// docs.SwaggerInfo.Description = "Ini adalah API dengan pattern DDD"
-	// docs.SwaggerInfo.Version = "1.0"
-	// docs.SwaggerInfo.Host = "h8-movies-production.up.railway.app"
-	// docs.SwaggerInfo.Schemes = []string{"https", "http"}
-
-	// route.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerfiles.Handler))
-
-	transactionHistoryRoute := route.Group("/transactionHistory")
+	transactionHistoryRoute := route.Group("/transactions")
 	{
 		transactionHistoryRoute.Use(authService.Authentication())
 		transactionHistoryRoute.POST("/", transactionHistoryHandler.CreateTransaction)
 		transactionHistoryRoute.GET("/my-transactions", transactionHistoryHandler.GetTransactionWithProducts)
-		transactionHistoryRoute.GET("/user-transactions", authService.AuthorizationAdmin(), transactionHistoryHandler.GetTransactionWithProductsAndUser)
+		transactionHistoryRoute.GET("/user-transactions", authService.AdminAuthorization(), transactionHistoryHandler.GetTransactionWithProductsAndUser)
 	}
 
 	userRoute := route.Group("/users")
@@ -93,19 +85,19 @@ func StartApp() {
 	categoryRoute := route.Group("/categories")
 	{
 		categoryRoute.Use(authService.Authentication())
-		categoryRoute.POST("/", authService.AuthorizationAdmin(), categoryHandler.CreateNewCategory)
+		categoryRoute.POST("/", authService.AdminAuthorization(), categoryHandler.CreateNewCategory)
 		categoryRoute.GET("/", categoryHandler.GetCategory)
-		categoryRoute.PATCH("/:categoryId", authService.AuthorizationAdmin(), categoryHandler.PatchCategory)
-		categoryRoute.DELETE("/:categoryId", authService.AuthorizationAdmin(), categoryHandler.DeleteCategory)
+		categoryRoute.PATCH("/:categoryId", authService.AdminAuthorization(), categoryHandler.PatchCategory)
+		categoryRoute.DELETE("/:categoryId", authService.AdminAuthorization(), categoryHandler.DeleteCategory)
 	}
 
-	productRoute := route.Group("/product")
+	productRoute := route.Group("/products")
 	{
 		productRoute.Use(authService.Authentication())
-		productRoute.POST("/", authService.AuthorizationAdmin(), productHandler.CreateProduct)
+		productRoute.POST("/", authService.AdminAuthorization(), productHandler.CreateProduct)
 		productRoute.GET("/", productHandler.GetProducts)
-		productRoute.PATCH("/:productId", authService.AuthorizationAdmin(), productHandler.UpdateProductById)
-		productRoute.DELETE(":productId", authService.AuthorizationAdmin(), productHandler.DeleteProduct)
+		productRoute.PATCH("/:productId", authService.AdminAuthorization(), productHandler.UpdateProductById)
+		productRoute.DELETE(":productId", authService.AdminAuthorization(), productHandler.DeleteProduct)
 
 	}
 

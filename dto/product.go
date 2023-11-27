@@ -6,9 +6,9 @@ import (
 )
 
 type NewProductRequest struct {
-	Title      string `json:"title" valid:"required~title cannot be empty" example:"Jelangkung"`
-	Price      int    `json:"price" valid:"required~price cannot be empty" example:"20000"`
-	Stock      int    `json:"stock"`
+	Title      string `json:"title" valid:"required~title cannot be empty"`
+	Price      int    `json:"price" valid:"required~Price can't be empty, range(0|50000000)~"`
+	Stock      int    `json:"stock" valid:"required~Stock can't be empty, range(5|1000000)~"`
 	CategoryId int    `json:"category_id"`
 }
 

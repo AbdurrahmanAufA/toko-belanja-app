@@ -13,7 +13,6 @@ import (
 )
 
 type TransactionHistoryService interface {
-	// CreateTransaction(newTransactionRequest dto.NewTransactionRequest, userId int) (*dto.TransactionResponse, errs.MessageErr)
 	CreateTransaction(productId int, transactionPayLoad *dto.TransactionRequest) (*dto.TransactionHistoryResponse, errs.MessageErr)
 	GetTransactionWithProducts(userId int) (*dto.TransactionHistoryResponse, errs.MessageErr)
 	GetTransactionWithProductsAndUser() (*dto.TransactionHistoryResponse, errs.MessageErr)

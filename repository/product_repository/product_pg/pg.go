@@ -24,11 +24,6 @@ const (
 		VALUES ($1,$2,$3,$4)
 		RETURNING id,createdat
 	`
-	// 	GetProductById= `
-	// SELECT "t"."id", "t"."title", "t"."status", "t"."description", "t"."user_id","t"."category_id","t"."created_at", "t"."updated_at", "u"."id", "u"."email","u"."full_name"
-	// FROM "task" as "t"
-	// LEFT JOIN "user" as "u" ON "t"."user_id" = "u"."id"
-	// `
 	getProduct = `
 		SELECT id, title, price, stock, category_id, createdat FROM "product"
 	`
